@@ -1,0 +1,27 @@
+{% extends 'hotel/barra_navegacion.html' %}
+
+{% block main %}
+<form action="{% url 'hotel' %}" method="post">
+    {% csrf_token %}
+    <div class="block-medio" id="datos">
+        <input type="text" placeholder="Nombre del Hotel" name="name" id="nombre" required>
+        <input type="tel" placeholder="telefono" name="telefono" id="">
+        <input type="text" placeholder="Numero Habitaciones" name="numero_habitaciones" id="">
+    </div>
+    <div class="block-medio"  id="direccion">
+        <input type="number" placeholder="no_externo" name="no_externo" id="">
+        <input type="text" placeholder="calle" name="calle" id="">
+        <input type="text" placeholder="colonia" name="colonia" id="">
+        <input type="text" placeholder="municipio" name="municipio" id="">
+        <input type="text" placeholder="estado" name="estado" id="">
+        <input type="text" placeholder="pais" name="pais" id="">
+        <input type="text" placeholder="codigo_postal" name="codigo_postal" id="">
+    </div>
+    <input type="submit" value="register" class="btn-submit">
+</form>
+{% endblock  %}
+
+{% block footer %}
+    {% include 'hotel/footer.html' %}
+{% endblock  %}
+    

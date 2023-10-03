@@ -1,0 +1,25 @@
+{%extends 'hotel/barra_navegacion.html'%}
+{%block title %}Inicio de Sesion {%endblock%}
+
+{% block main %}
+    <form action="{%url 'login'%}" method="post">
+        {% csrf_token %}
+        <h2>Iniciar Sesion</h2>
+        <input type="text" name="username" id="" placeholder="Nombre de Usuario">
+        <input type="password" name="password" id="" placeholder="Contraseña">
+        <input type="submit" class="btn-submit" value="Iniciar Sesion">
+    </form>
+    
+    {% if error_message%}
+        <div>
+            <h1>Error</h1>
+            <h3>{{error_message}}</h3>
+        </div>
+    {% endif %}
+        
+{% endblock%}
+
+{% block footer %}
+    {% include "hotel/footer.html" %}
+{% endblock%}
+    

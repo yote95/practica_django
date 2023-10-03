@@ -1,0 +1,16 @@
+{%extends 'hotel/barra_navegacion.html'%}
+{%block title %}Inicio de Sesion {%endblock%}
+
+{% block main %}
+    <form action="" method="post">
+        <h2>Iniciar Sesion</h2>
+        <input type="text" name="username" id="" placeholder="Nombre de Usuario">
+        <input type="password" name="" id="" placeholder="Contraseña">
+        <input type="submit" value="Iniciar Sesion">
+    </form>
+{% endblock%}
+
+{% block footer %}
+    {% include "hotel/footer.html" %}
+{% endblock%}
+    

@@ -1,0 +1,37 @@
+{% extends 'hotel/barra_navegacion.html' %}
+
+{% block main %}
+<form action="{% url 'editarhotel' hotel.id %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="_method" value="PUT">
+    <div class="block-medio" id="datos">
+        <input type="text" value="{{hotel.name_text}}" placeholder="Nombre del Hotel" name="name" id="nombre" required>
+        <input type="text" value="{{hotel.numero_habitaciones_numeber}}" placeholder="Numero Habitaciones" name="numero_habitaciones" id="">
+        <input type="tel"  value="{{hotel.telefono_text}}" placeholder="telefono" name="telefono" id="">
+    </div>
+    <div class="block-medio"  id="direccion">
+        <input type="number" value="{{hotel.direccion_fk.numero_externo_number}}" placeholder="no_externo" name="no_externo" id="">
+        <input type="text" value="{{hotel.direccion_fk.calle_text}}" placeholder="calle" name="calle" id="">
+        <input type="text" value="{{hotel.direccion_fk.colonia_text}}" placeholder="colonia" name="colonia" id="">
+        <input type="text" value="{{hotel.direccion_fk.ciudad_text}}" placeholder="municipio" name="municipio" id="">
+        <input type="text" value="{{hotel.direccion_fk.estado_text}}" placeholder="estado" name="estado" id="">
+        <input type="text" value="{{hotel.direccion_fk.pais_text}}" placeholder="pais" name="pais" id="">
+        <input type="text" value="{{hotel.direccion_fk.codigo_text}}" placeholder="codigo_postal" name="codigo_postal" id="">
+    </div>
+    <div class="block-medio">
+
+        <a href="{% url 'admin' %}"><input type="button" value="regresar" class="btn"></a>
+        <input type="submit" value="editar" class="btn-submit">
+    </div>
+</form>
+<form action="{% url 'editarhotel' hotel.id %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Eliminar" class="btn-borrar">
+</form>
+{% endblock  %}
+
+{% block footer %}
+    {% include 'hotel/footer.html' %}
+{% endblock  %}
+    

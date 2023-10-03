@@ -1,0 +1,21 @@
+{%extends "hotel/barra_navegacion.html"%}
+{%block title%} Registro de Usuario {%endblock%}
+{%block main%}
+<form action="{%url 'register'%}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="nombre" id="">
+        <input type="text" name="apellido_paterno" id="">
+        <input type="text" name="apellido_materno" id="">
+        <input type="tel" name="telefonp" id="">
+        <input type="email" name="correo" id="">
+        <input type="text" name="usuario" id="">
+        <input type="password" name="contrasena" id="">
+        <input type="radio" name="genero" id="masculino">
+        <label for="masculino">Masculino</label>
+        <input type="radio" name="genero" id="femenino">
+        <label for="femenino">Femenino</label>
+        <input type="file" name="foto_perfil" id="">
+        <input type="submit" value="Registrase">
+    </form>
+{%endblock%}
+{%include "hotel/footer.html"%}

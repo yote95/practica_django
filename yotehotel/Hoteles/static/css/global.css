@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Ysabeau', sans-serif;
+}
+.btn-borrar{
+    background-color: rgb(242, 99, 99);
+}
+.btn-borrar:hover{
+    background-color: rgb(248, 144, 144);
+    cursor: pointer;
+}
+.btn{
+    background-color: #31f385;
+}
+.btn:hover{
+    background-color: #b1fad1;
+    cursor: pointer;
+}
+.btn-submit{
+    background-color: #3178f3;
+}
+.btn-submit:hover{
+    background-color: #b1ebfa;
+    cursor: pointer;
+}
+.btn-logout{
+    background-color: rgb(242, 197, 99);
+}
+.btn-logout:hover{
+    background-color: rgb(246, 248, 144);
+    cursor: pointer;
+}
+header{
+    background-image:linear-gradient(#31f385,#006937)
+}
+nav{
+    padding: 10px;
+}
+#photo{
+    float:right;
+    margin-right:10px;
+    margin-bottom: 0;
+}
+#buscar{
+    width:35%;
+}
+input #photo{
+    display:none;
+}
+input{
+    background-color:#f1f1f1eb;
+    color:#000;
+    padding:7px;
+    font-size:15px;
+    border:none;
+    border-radius:15px;
+    margin:5px;
+}
+a:hover::after{
+    content:default;
+    background-color:aliceblue;
+}
+h1{
+    text-align: center;
+    margin: 5px;
+}
+.nav-button {
+    float: right;
+    margin-top: 8px;
+    margin-right: 5px;
+}
+nav a{
+    display:inline-block;
+    margin:0px 10px;
+    text-decoration:none;
+    color:#000;
+    font-size:20px;
+}
+main{
+    padding: 5px;
+    margin-bottom: 150px;
+}
+.block{
+    display:block;
+    width: 100%;
+}
+.block-medio{
+    display: inline-block;
+    width: 50%;
+    padding: 5px;
+}
+.button{
+    background-color:aquamarine;
+}
+.button:hover{
+     background-color:#cae9df;
+    cursor:pointer;
+}

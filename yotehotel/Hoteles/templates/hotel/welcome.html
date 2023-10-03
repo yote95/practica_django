@@ -1,0 +1,23 @@
+{%extends "hotel/barra_navegacion.html" %}
+{%block title %} Hoteles {%endblock%}
+{%block main%}
+    {%load static%}
+    <link rel="stylesheet" href="{%static 'css/listaHabitacion.css'%}">
+    {% for habitacion in lista_habitaciones %}
+        <a href="/habitacion/{{habitacion.id}}" id="tarjeta" style="color:#000000;">
+            <div class="tarjeta">
+                <div class="fila-2">
+                    <img src="http://localhost/{{habitacion.src}}" alt="" srcset=""  >
+                </div>
+                <div class="fila-10">
+                    <label for="habitacion"><h3>{{habitacion.title_text}}</h3></label>
+                    <label><h4>Capacidad: {{habitacion.capacidad_personas}}</h4><h4>${{habitacion.precio_hora_number}}/hr</h4></label>
+                </div>
+                
+            </div>
+        </a>
+    {% endfor %}
+{%endblock%}
+{%block footer%}
+{%include "hotel/footer.html"%}
+{%endblock%}

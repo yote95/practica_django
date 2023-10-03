@@ -1,0 +1,16 @@
+{%include "hotel/barra_navegacion.html" %}
+{%block title %}Hoteles {%endblock%}
+{%block main%}
+    {% for habitacion in lista_habitaciones %}
+        <div class="tajeta">
+            <div class="fila-2">
+                <img src="{{habitacion.src}}" alt="habitacion.alt" srcset="">
+            </div>
+            <div class="fila-10">
+                <label for="habitacion"><h3>{{habitacion.title}}</h3></label>
+            </div>
+            
+        </div>
+    {% endfor %}
+{%endblock%}
+{%include "hotel/footer.html"%}

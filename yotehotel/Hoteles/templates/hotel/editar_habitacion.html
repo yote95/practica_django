@@ -1,0 +1,35 @@
+{%extends "hotel/barra_navegacion.html"%}
+{%block title %} Registro de Habitacion {%endblock%}
+{%block main%}
+    <form action="{% url 'editarhabitacion' habitacion.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="_method" value="PUT">
+        <select name="hotel" required>
+            {% for hotel in hoteles  %}
+                {% if habitacion.codigo_hotel_fk.id == hotel.id %}
+                <option value="{{hotel.id}}" selected>{{hotel.name_text}}</option>
+                {% else %}
+                <option value="{{hotel.id}}">{{hotel.name_text}}</option>    
+                {% endif %}
+            {% endfor %}
+          </select>
+        <input type="text" placeholder="Titulo" value="{{habitacion.title_text}}" name="title" id="" required>
+        <input type="number" placeholder="Precio por noche" value="{{habitacion.precio_hora_number}}" name="precio" id="" required>
+        <input type="number" placeholder="Capacidad de Personas" value="{{habitacion.capacidad_personas}}" name="capacidad_personas" id="" required>
+        <input type="file" name="photo" id="">
+        <div class="block-medio">
+            <a href="{% url 'admin' %}"><input type="button" value="regresar" class="btn"></a>
+            <input type="submit" value="editar" class="btn-submit">
+        </div>
+    </form>
+    <form action="{% url 'editarhabitacion' habitacion.id %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Eliminar" class="btn-borrar">
+    </form>
+{%endblock%}
+
+{% block footer %}
+    {% include 'hotel/footer.html' %}
+{% endblock %}
+    

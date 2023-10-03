@@ -1,0 +1,32 @@
+version: '3'
+services:
+  web:
+    image: django_pia:latest
+    networks:
+      - net
+    ports:
+      - '8000:8000'
+    volumes:
+      - /var/www/html:/var/www/html
+    depends_on:
+      db:
+        condition: service_started
+  db:
+   image: mysql:8.0
+   ports:
+     - '3306:3306'
+   volumes:
+    - mysqlVolume:/var/lib/mysql
+   env_file:
+    - ./.env-mysql
+   networks:
+     - net
+volumes:
+  mysqlVolume:
+networks:
+  net:
+   driver: bridge
+
+     
+   
+     

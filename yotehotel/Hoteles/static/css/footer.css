@@ -1,0 +1,16 @@
+footer {
+  display: block;
+  background-color: aliceblue;
+  width: 100%;
+  color:rgb(1, 34, 34);
+  position: fixed;
+  bottom: 0;
+}
+footer ul{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+footer ul li{
+  display: inline-flex; 
+  gap:10px;
+}

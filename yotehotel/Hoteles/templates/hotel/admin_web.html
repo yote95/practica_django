@@ -1,0 +1,60 @@
+{% extends 'hotel/barra_navegacion.html' %}
+
+
+{% block main %}
+    <div class="barra_lateral">
+        <ul>
+            <li>Hotel</li>
+            <li>Habitacion</li>
+            <li>Gerenete</li>
+        </ul>
+    </div>
+    <div class="content" id="hotel">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Numero de Habitación</th>
+                <th>Dirección</th>
+            </tr>
+            
+            {% for hotel in hoteles %}
+                <tr>
+                    <td><a href="{% url 'editarhotel' hotel.id %}">{{hotel.name_text}}</a></td>
+                    <td>{{hotel.telefono_text}}</td>
+                    <td>{{hotel.numero_habitaciones_numeber}}</td>
+                    <td>{{hotel.direccion_fk.direccion_completa}}</td>
+                </tr>
+            {% endfor %}
+                
+        </table>
+        <a href="{% url 'hotel' %}"><input type="button" value="registar" class="btn"></a>
+        
+    </div>
+    <div class="content" id="habitacion">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>precio por noche</th>
+                <th>Capacidad Maxima</th>
+            </tr>
+            {% for habitacion in habitaciones %}
+                <tr>
+                    <td><a href="{% url 'editarhabitacion' habitacion.id %}">{{habitacion.title_text}}</a></td>
+                    <td>{{habitacion.precio_hora_number}}</td>
+                    <td>{{habitacion.capacidad_personas}}</td>
+                </tr>
+            {% endfor %}
+                
+        </table>
+        <a href="{% url 'registarhabitacion' %}"><input type="button" value="registar" class="btn"></a>
+        
+    </div>
+{% endblock %}
+
+
+{% block footer %}
+    {% include 'hotel/footer.html' %}
+{% endblock %}
+    
+    

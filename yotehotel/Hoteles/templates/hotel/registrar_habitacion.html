@@ -1,0 +1,23 @@
+{%extends "hotel/barra_navegacion.html"%}
+{%block title %} Registro de Habitacion {%endblock%}
+{%block main%}
+    <form action="{% url 'registarhabitacion' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <select name="hotel" required>
+            <option value="0" selected>Ninguno</option>
+            {% for hotel in hoteles  %}
+            <option value="{{hotel.id}}">{{hotel.name_text}}</option>    
+            {% endfor %}
+        </select>
+        <input type="text" placeholder="Titulo"  name="title" id="" required>
+        <input type="text" placeholder="Precio por noche"  name="precio" id="" required>
+        <input type="number" placeholder="Capacidad de Personas"  name="capacidad_personas" id="" required>
+        <input type="file" name="photo" id="">
+        <input type="submit" value="registar" class="btn-submit">
+    </form>
+{%endblock%}
+
+{% block footer %}
+    {% include 'hotel/footer.html' %}
+{% endblock %}
+    

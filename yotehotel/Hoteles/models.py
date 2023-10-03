@@ -9,30 +9,23 @@ class Direccion(models.Model):
     pais_text = models.CharField(max_length=256)
     codigo_text = models.CharField(max_length=5)
     numero_externo_number = models.IntegerField()
-
-class Clientes(models.Model):
-    name_text = models.CharField(max_length=64)
-    last_name_text = models.CharField(max_length=64)
-    fecha_nacimiento = models.DateField()
-    middle_name_text = models.CharField(max_length=64)
-    telefono_text = models.CharField(max_length=10)
-    dirreccion_fk = models.ForeignKey(Direccion,on_delete=models.CASCADE)
     @property
-    def full_name(self):
-        return f"{self.name_text} {self.last_name_text} {self.middle_name_text}"
-    @property
-    def edad(self):
-        return (self.fecha_nacimiento - date.today()).days / 365
+    def direccion_completa(self):
+        return 'Calle: ' + self.calle_text.title() + ' #' + str(self.numero_externo_number) + ' Colonia: ' + self.colonia_text.title() + ' Municipio: ' + self.ciudad_text.title() + ' Estado: '+ self.estado_text.title() + ' Pais: ' + self.pais_text.title() + ' '
+    
 
 class Hoteles(models.Model):
     name_text = models.CharField(max_length=128)
     numero_habitaciones_numeber = models.IntegerField()
     telefono_text = models.CharField(max_length=10)
-    dirreccion_fk = models.ForeignKey(Direccion,on_delete=models.CASCADE)
+    direccion_fk = models.ForeignKey(Direccion,on_delete=models.CASCADE)
 
 class Habitaciones(models.Model):
     codigo_hotel_fk = models.ForeignKey(Hoteles,on_delete=models.CASCADE)
     capacidad_personas = models.IntegerField()
+    src = models.ImageField(null=True,upload_to='imagenes/habitaciones/')
+    alt = models.CharField(max_length=128,default='Imagen')
+    title_text = models.CharField(max_length=128, default='titulo')
     precio_hora_number = models.PositiveIntegerField()
 
 class Generente(models.Model):
@@ -47,7 +40,9 @@ class Usuarios(models.Model):
     acessos = [
         ("C", "Cliente"),
         ("A", "Administrador"),
-    ]
+    ] 
+    src = models.ImageField(null=True, upload_to='imagenes/avaters/')
+    alt = models.CharField(max_length=128,default='Imagen')
     username_text = models.CharField(max_length=32)
     email_text = models.CharField(max_length=128)
     password_text = models.CharField(max_length=64)
@@ -59,6 +54,24 @@ class Imagenes(models.Model):
     @property
     def src(self):
         return socket.gethostname()+self.path
+
+class Clientes(models.Model):
+    user_fk = models.ForeignKey(Usuarios,null=True,on_delete=models.CASCADE)
+    name_text = models.CharField(max_length=64)
+    last_name_text = models.CharField(max_length=64, null=True)
+    fecha_nacimiento = models.DateField()
+    middle_name_text = models.CharField(max_length=64,null=True)
+    telefono_text = models.CharField(max_length=10,null=True)
+    direccion_fk = models.ForeignKey(Direccion,on_delete=models.CASCADE)
+    @property
+    def formatdate(self):
+        return self.fecha_nacimiento.strftime('%Y-%m-%d')
+    @property
+    def full_name(self):
+        return f"{self.name_text} {self.last_name_text} {self.middle_name_text}"
+    @property
+    def edad(self):
+        return (self.fecha_nacimiento - date.today()).days / 365.25
 
 class cliente_habitacion(models.Model):
     persona_id_fk = models.ForeignKey(Clientes,on_delete=models.CASCADE)

@@ -1,0 +1,29 @@
+{%extends "barra_navegacion.html"%}
+{%block title %} Reporte del Mes {%endblock%}
+{%block main%}
+    <h1>{{hotel.name}}</h1>
+    {% csrf_token %}
+    <form action="" method="get">
+        <input type="month" name="Reporte del Mes">
+    </form>
+    <table>
+        <tr>
+            <th>Habitacion</th>
+            <th>Dias Ocupados</th>
+            <th>Dias Disponibles</th>
+            <th>Ganacias</th>
+            <th>Gastos</th>
+            <th>Ganacias neta</th>
+        </tr>
+        {%for habitacion in lista_habitaciones%}
+        <tr>
+            <td>{{habitacion.title}}</td>
+            <td>{{habitacion.dias_ocupados}}</td>
+            <td>{{habitacion.dias_disponible}}</td>
+            <td>{{habitacion.ganacias}}</td>
+            <td>{{habitacion.gastos}}</td>
+            <td>{{habitacion.ganancias_neta}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+{%endblock%}

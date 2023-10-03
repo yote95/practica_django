@@ -1,0 +1,21 @@
+{%extends "hotel/barra_navegacion.html"%}
+{%block title %}Habitacion{%endblock%}
+{%block main %}
+    <h1>{{hotel.name_text}}</h1>
+    <h1>{{habitacion.title_text}}<h1>
+    <img src="http://localhost/{{habitacion.src}}" width="500px" height="500px">
+    <h2><pre>${{habitacion.precio_hora_number}}/noche        Capacidad Maxima: {{habitacion.capacidad_personas}}</pre></h2>
+    <h4>Ubicado en: {{hotel.direccion_fk.direccion_completa}}</h4>
+    <form action="" method="post">
+        <label for="fecha_llegada">Fecha Llegada</label>
+        <input type="date" name="fecha_llegada" id="" required>
+        <input type="time" name="hora_llegada" id="" required>
+        <label for="fecha_salida">Fecha Salida</label>
+        <input type="date" name="fecha_salida" id="" required>
+        <input type="time" name="hora_salida" id="" required>
+        <input type="submit" value="Reservar habitacion" class="button" required>
+    </form>
+{%endblock%}
+{%block footer%}
+    {% include 'hotel/footer.html' %}
+{%endblock%}

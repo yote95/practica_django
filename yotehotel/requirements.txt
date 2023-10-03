@@ -1,0 +1,8 @@
+mysqlclient
+mysql-connector-python
+virtualenv
+django
+Pillow
+django-environ
+future-fstrings
+tzdata
